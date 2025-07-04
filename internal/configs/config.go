@@ -7,23 +7,31 @@ import (
 	"github.com/spf13/viper"
 )
 
-type resource struct {
+type Access struct {
+	Name string
+	Key  string
+}
+
+type Resource struct {
 	Name            string
 	Endpoint        string
 	Destination_URL string
+	Access          []Access
 }
 
-type configuration struct {
-	Server struct {
-		Host        string
-		Listen_port string
-	}
-	Resources []resource
+type Server struct {
+	Host        string
+	Listen_port string
 }
 
-var Config *configuration
+type Configuration struct {
+	Server    Server
+	Resources []Resource
+}
 
-func NewConfiguration() (*configuration, error) {
+var Config *Configuration
+
+func NewConfiguration() (*Configuration, error) {
 	viper.AddConfigPath("settings")
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")

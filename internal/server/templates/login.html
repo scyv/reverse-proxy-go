@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>Login</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+
+    <form action="/login" method="POST">
+      <div>Enter Api Key</div>
+      <div>
+        <input type="text" name="key" />
+      </div>
+      <div>
+        <input type="submit" value="Submit" /><input
+          type="hidden"
+          name="redirect"
+          value="{{.}}"
+        />
+      </div>
+    </form>
+  </body>
+</html>
